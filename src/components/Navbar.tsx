@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -7,6 +9,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Products', href: '/products' },
+  { name: 'Careers', href: '/careers' },
   { name: 'Contact', href: '/contact' },
 ]
 

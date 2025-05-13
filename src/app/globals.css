@@ -3,25 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 15, 23, 42;
   --background-rgb: 255, 255, 255;
+  --primary: #1e40af;
+  --secondary: #1e3a8a;
+  --accent: #3b82f6;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  font-family: 'Inter', sans-serif;
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors;
+    @apply bg-primary text-white px-6 py-2 rounded-lg shadow-md hover:bg-secondary transition-all font-semibold text-lg;
   }
   
+  .btn-secondary {
+    @apply bg-white text-primary px-6 py-2 rounded-lg shadow-md hover:bg-gray-50 transition-all font-semibold text-lg border border-primary;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
   .section-padding {
     @apply py-16 md:py-24;
   }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-100;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  }
+
+  .section-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   }
 } 

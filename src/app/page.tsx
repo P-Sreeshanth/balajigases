@@ -1,85 +1,158 @@
-import Image from 'next/image'
+'use client'
+
+import { FaLeaf, FaIndustry, FaTruck, FaShieldAlt, FaHeartbeat, FaFlask, FaUtensils, FaTools, FaAward, FaUserFriends, FaClock, FaCheckCircle } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import { FaLeaf, FaIndustry, FaTruck, FaShieldAlt } from 'react-icons/fa'
+import HeroSection from '@/components/HeroSection'
+import TimelineSection from '@/components/TimelineSection'
+// import FeatureCard from '@/components/FeatureCard'
 
 export default function Home() {
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/90 z-10" />
-        <div className="absolute inset-0">
-          <Image
-            src="/hero-bg.jpg"
-            alt="Industrial gases background"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="container-custom relative z-20 text-white">
-          <motion.div
+    <>
+      <HeroSection />
+      <TimelineSection />
+      <main>
+        <div className="particle-bg" />
+        {/* Hero Section */}
+        <section className="h-screen flex flex-col justify-center items-center gradient-bg text-white text-center relative overflow-hidden parallax">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-lg"
+          >
+            Welcome to Sri Balaji Industrial Gases
+          </motion.h1>
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="text-2xl md:text-3xl mb-10 max-w-2xl mx-auto font-medium"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Welcome to Sri Balaji Industrial Gases
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-              Your trusted partner in eco-friendly gas solutions, dedicated to innovation and sustainability.
-            </p>
-            <button className="btn-primary bg-white text-primary hover:bg-gray-100">
-              Contact Us
-            </button>
-          </motion.div>
-        </div>
-      </section>
+            Your trusted partner in eco-friendly gas solutions, dedicated to innovation and sustainability.
+          </motion.p>
+          <motion.a
+            href="/contact"
+            whileHover={{ scale: 1.08 }}
+            className="btn-glass"
+          >
+            Contact Us
+          </motion.a>
+          <div className="divider-wave absolute bottom-0 left-0 w-full" />
+        </section>
 
-      {/* Features Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <FeatureCard
-              icon={<FaLeaf className="w-8 h-8" />}
-              title="Eco-Friendly Solutions"
-              description="Committed to sustainable practices and environmental responsibility."
-            />
-            <FeatureCard
-              icon={<FaIndustry className="w-8 h-8" />}
-              title="Industrial Excellence"
-              description="State-of-the-art production facility with cutting-edge technology."
-            />
-            <FeatureCard
-              icon={<FaTruck className="w-8 h-8" />}
-              title="Fast Delivery"
-              description="Efficient logistics ensuring timely delivery of your gas requirements."
-            />
-            <FeatureCard
-              icon={<FaShieldAlt className="w-8 h-8" />}
-              title="Safety First"
-              description="Highest safety standards and quality control measures."
-            />
+        {/* Features Section */}
+        <section className="section-padding section-gradient relative z-10">
+          <div className="container-custom">
+            <h2 className="text-4xl font-bold text-center mb-12 text-dark">Our Core Features</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <FeatureCard icon={<FaLeaf className="w-10 h-10 animate-bounce" />} title="Eco-Friendly Solutions" desc="Sustainable practices and environmental responsibility." />
+              <FeatureCard icon={<FaIndustry className="w-10 h-10 animate-pulse" />} title="Industrial Excellence" desc="State-of-the-art production and technology." />
+              <FeatureCard icon={<FaTruck className="w-10 h-10 animate-spin-slow" />} title="Fast Delivery" desc="Efficient logistics for timely delivery." />
+              <FeatureCard icon={<FaShieldAlt className="w-10 h-10 animate-bounce" />} title="Safety First" desc="Highest safety standards and quality control." />
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        {/* Industries Served */}
+        <section className="section-padding bg-light relative z-10">
+          <div className="container-custom">
+            <h2 className="text-4xl font-bold text-center mb-12 text-dark">Industries We Serve</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <IndustryCard icon={<FaHeartbeat className="w-8 h-8 animate-pulse" />} label="Healthcare" />
+              <IndustryCard icon={<FaFlask className="w-8 h-8 animate-bounce" />} label="Research & Labs" />
+              <IndustryCard icon={<FaUtensils className="w-8 h-8 animate-spin-slow" />} label="Food & Beverage" />
+              <IndustryCard icon={<FaTools className="w-8 h-8 animate-bounce" />} label="Manufacturing" />
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="section-padding section-gradient relative z-10">
+          <div className="container-custom">
+            <h2 className="text-4xl font-bold text-center mb-12 text-dark">Why Choose Us?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <StatCard icon={<FaAward className="w-10 h-10 text-accent animate-bounce" />} stat="29+" label="Years of Excellence" />
+              <StatCard icon={<FaUserFriends className="w-10 h-10 text-accent animate-pulse" />} stat="1000+" label="Happy Clients" />
+              <StatCard icon={<FaClock className="w-10 h-10 text-accent animate-spin-slow" />} stat="24/7" label="Support & Delivery" />
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section className="section-padding bg-light relative z-10">
+          <div className="container-custom">
+            <h2 className="text-4xl font-bold text-center mb-12 text-dark">Our Certifications</h2>
+            <div className="flex flex-wrap justify-center gap-8">
+              <CertCard label="ISO 9001" />
+              <CertCard label="ISO 14001" />
+              <CertCard label="OHSAS 18001" />
+              <CertCard label="CE Marking" />
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="section-padding gradient-bg text-white text-center relative z-10">
+          <div className="container-custom">
+            <h2 className="text-4xl font-bold mb-6">Ready for Reliable Gas Solutions?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              Get in touch for custom solutions, quotes, or expert advice. We're here to help your business thrive.
+            </p>
+            <a href="/contact" className="btn-glass">Request a Quote</a>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
 
-function FeatureCard({ icon, title, description }: {
-  icon: React.ReactNode
-  title: string
-  description: string
-}) {
+function FeatureCard({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="bg-white p-6 rounded-lg shadow-lg"
+      whileHover={{ y: -8, scale: 1.04 }}
+      className="glass-card p-8 flex flex-col items-center text-center"
     >
-      <div className="text-primary mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <div className="mb-4 text-primary">{icon}</div>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-700">{desc}</p>
+    </motion.div>
+  )
+}
+
+function IndustryCard({ icon, label }: { icon: React.ReactNode, label: string }) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.08 }}
+      className="glass-card p-6 flex flex-col items-center text-center"
+    >
+      <div className="mb-2 text-secondary">{icon}</div>
+      <span className="font-semibold text-lg text-dark">{label}</span>
+    </motion.div>
+  )
+}
+
+function StatCard({ icon, stat, label }: { icon: React.ReactNode, stat: string, label: string }) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="glass-card p-8 flex flex-col items-center text-center"
+    >
+      <div className="mb-4">{icon}</div>
+      <span className="text-4xl font-extrabold text-primary mb-2">{stat}</span>
+      <span className="text-lg text-dark font-semibold">{label}</span>
+    </motion.div>
+  )
+}
+
+function CertCard({ label }: { label: string }) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.08 }}
+      className="glass-card px-8 py-6 flex flex-col items-center text-center"
+    >
+      <FaCheckCircle className="w-8 h-8 text-green-500 mb-2" />
+      <span className="font-semibold text-lg text-dark">{label}</span>
     </motion.div>
   )
 } 
